@@ -1,0 +1,23 @@
+{% extends 'courseInfo/base.html' %}
+
+{% block title %}
+    Semester List
+{% endblock %}
+
+{% block content %}
+    <h2>Semester List</h2>
+    <div>
+        <a href="{% url 'courseinfo_semester_create_urlpattern' %}">
+            Create New Semester
+        </a>
+    </div>
+    <ul>
+        {% for semester in semester_list %}
+            <li>
+                <a href="{{ semester.get_absolute_url }}">{{ semester }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are no semesters now</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

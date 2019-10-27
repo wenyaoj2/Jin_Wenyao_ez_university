@@ -39,11 +39,15 @@ class Migration(migrations.Migration):
             unique_together={('course_number', 'course_name')},
         ),
         migrations.AlterUniqueTogether(
+            name='instructor',
+            unique_together={('last_name','first_name')},
+        ),
+        migrations.AlterUniqueTogether(
             name='registration',
             unique_together={('section', 'student')},
         ),
-        migrations.AlterUniqueTogether(
-            name='student',
-            unique_together={('last_name', 'first_name', 'nick_name')},
-        ),
+        # migrations.AlterUniqueTogether(
+        #     name='student',
+        #     unique_together={('last_name', 'first_name', 'nick_name')},
+        # ),
     ]
