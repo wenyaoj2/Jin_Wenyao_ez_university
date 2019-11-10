@@ -1,32 +1,28 @@
 {% extends 'courseinfo/base.html' %}
 
 {% block title %}
-    Instructor - {{ instructor }}
+    Semester - {{ semester }}
 {% endblock %}
 
 {% block content %}
-    <h2>{{ instructor }}</h2>
+    <h2>{{ semester }}</h2>
     <ul>
         <li>
-            <a href="{{ instructor.get_update_url }}">
-                Edit Instructor
+            <a href="{{ semester.get_update_url }}" class="button">
+                Edit Semester
             </a>
         </li>
         <li>
-            <a href="{{ instructor.get_delete_url }}">
-                Delete Instructor
+            <a href="{{ semester.get_delete_url }}" class="button">
+                Delete Semester
             </a>
         </li>
     </ul>
     <section>
         <table>
             <tr>
-                <th>First Name:</th>
-                <td>{{ instructor.first_name }}</td>
-            </tr>
-            <tr>
-                <th>Last Name:</th>
-                <td>{{ instructor.last_name }}</td>
+                <th>Semester name:</th>
+                <td>{{ semester.semester_name }}</td>
             </tr>
         </table>
     </section>
