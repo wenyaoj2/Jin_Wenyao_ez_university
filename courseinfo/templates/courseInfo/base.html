@@ -26,6 +26,19 @@
 <body>
 
 <div class="container">
+    <div class="status row">
+        <div class="offset-by-eight four columns">
+            <ul class="inline">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout_urlpattern' %}">
+                        Log Out, {{ user.get_username }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'login_urlpattern' %}">
+                        Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
     <header class="row">
         <div class="offset-by-one ten columns">
             <h1 class="logo">EZ University</h1>
@@ -34,27 +47,49 @@
     </header>
     <nav>
         <ul>
-            <li>
-                <a href="{% url 'courseinfo_instructor_list_urlpattern' %}">
-                    Instructors</a></li>
-            <li>
-                <a href="{% url 'courseinfo_section_list_urlpattern' %}">
-                    Sections</a></li>
-            <li>
-                <a href="{% url 'courseinfo_course_list_urlpattern' %}">
-                    Courses</a></li>
-            <li>
-                <a href="{% url 'courseinfo_semester_list_urlpattern' %}">
-                    Semesters</a></li>
-            <li>
-                <a href="{% url 'courseinfo_student_list_urlpattern' %}">
-                    Students</a></li>
-            <li>
-                <a href="{% url 'courseinfo_registration_list_urlpattern' %}">
-                    Registrations</a></li>
+            {% if perms.courseinfo.view_instructor %}
+                <li>
+                    <a href="{% url 'courseinfo_instructor_list_urlpattern' %}">
+                        Instructors</a></li>
+            {% endif %}
+
+            {% if perms.courseinfo.view_section %}
+                <li>
+                    <a href="{% url 'courseinfo_section_list_urlpattern' %}">
+                        Sections</a></li>
+            {% endif %}
+
+            {% if perms.courseinfo.view_course %}
+                <li>
+                    <a href="{% url 'courseinfo_course_list_urlpattern' %}">
+                        Courses</a></li>
+            {% endif %}
+
+            {% if perms.courseinfo.view_semester %}
+                <li>
+                    <a href="{% url 'courseinfo_semester_list_urlpattern' %}">
+                        Semesters</a></li>
+            {% endif %}
+
+
+            {% if perms.courseinfo.view_student %}
+                <li>
+                    <a href="{% url 'courseinfo_student_list_urlpattern' %}">
+                        Students</a></li>
+            {% endif %}
+
+
+            {% if perms.courseinfo.view_registration %}
+                <li>
+                    <a href="{% url 'courseinfo_registration_list_urlpattern' %}">
+                        Registrations</a></li>
+            {% endif %}
+
+
             <li>
                 <a href="{% url 'about_urlpattern' %}">
                     About</a></li>
+
         </ul>
     </nav>
     <main>

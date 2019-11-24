@@ -5,20 +5,26 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ section }}</h2>
-    <ul>
-        <li>
-            <a href="{{ section.get_update_url }}" class="button">
-                Edit Section
-            </a>
-        </li>
-        <li>
-            <a href="{{ section.get_delete_url }}" class="button">
-                Delete Section
-            </a>
-        </li>
-    </ul>
-    <section>
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ section }}</h2>
+                <ul class="inline">
+                    {% if perms.courseinfo.change_section %}
+                    <li>
+                        <a href="{{ section.get_update_url }}"
+                           class="button">
+                            Edit Section</a></li>
+                    {% endif %}
+                {% if perms.courseinfo.delete_section %}
+                    <li>
+                        <a href="{{ section.get_delete_url }}"
+                           class="button">
+                            Delete Section</a></li>
+                {% endif %}
+                </ul>
+
+                   <section>
         <table>
             <tr>
                 <th>Course:</th>
@@ -46,11 +52,16 @@
         <ul>
             {% for registration in registration_list %}
                 <li>
-                    <a href="{{ registration.get_absolute_url }}">{{ registration }}</a>
+                    <a href="{{ registration.get_absolute_url }}">{{ registration.student }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no students registered for this section.</em></li>
             {% endfor %}
         </ul>
     </section>
+
+            </div>
+        </div> <!-- row -->
+
+    </article>
 {% endblock %}

@@ -5,18 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ registration }}</h2>
-    <ul>
+<article>
+  <div class="row">
+  <div class="offset-by-two eight columns">
+    <h2>{{ student }}</h2>
+    <ul class="inline">
+        {% if perms.courseinfo.change_student %}
         <li>
-            <a href="{{ registration.get_update_url }}" class="button">
-                Edit Registration
-            </a>
-        </li>
-        <li>
-            <a href="{{ registration.get_delete_url }}" class="button">
-                Delete Registration
-            </a>
-        </li>
+          <a href="{{ registration.get_update_url }}"
+          class="button">
+            Edit Registration</a></li>
+        {% endif %}
+        {% if perms.courseinfo.delete_student %}
+          <a href="{{ registration.get_delete_url }}"
+          class="button">
+            Delete Registration</a></li>
+        {% endif %}
     </ul>
     <section>
         <table>
@@ -25,12 +29,13 @@
                 <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>
             </tr>
             <tr>
-                <th>section:</th>
+                <th>Section:</th>
                 <td><a href="{{ section.get_absolute_url }}">{{ section }}</a></td>
             </tr>
         </table>
     </section>
 
+  </div></div> <!-- row -->
 
-
+</article>
 {% endblock %}
