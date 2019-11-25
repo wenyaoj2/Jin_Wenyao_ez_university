@@ -29,7 +29,7 @@ class InstructorDetail(LoginRequiredMixin,PermissionRequiredMixin,View):
         section_list = instructor.sections.all()
         return render(
             request,
-            'courseInfo/instructor_detail.html',
+            'courseinfo/instructor_detail.html',
             {'instructor':instructor, 'section_list':section_list}
         )
 
@@ -42,7 +42,7 @@ class InstructorCreate(LoginRequiredMixin,PermissionRequiredMixin,CreateView):
 class InstructorUpdate(LoginRequiredMixin,PermissionRequiredMixin,UpdateView):
     form_class = InstructorForm
     model = Instructor
-    template_name = 'courseInfo/instructor_form_update.html'
+    template_name = 'courseinfo/instructor_form_update.html'
     permission_required = 'courseinfo.change_instructor'
 
 
@@ -93,7 +93,7 @@ class SectionDetail(LoginRequiredMixin,PermissionRequiredMixin,View):
         registration_list = section.registrations.all()
         return render(
             request,
-            'courseInfo/section_detail.html',
+            'courseinfo/section_detail.html',
             {'section':section,
              "semester":semester,
              "course":course,
@@ -109,7 +109,7 @@ class SectionCreate(LoginRequiredMixin,PermissionRequiredMixin,CreateView):
 class SectionUpdate(LoginRequiredMixin,PermissionRequiredMixin,UpdateView):
     form_class = SectionForm
     model = Section
-    template_name = 'courseInfo/section_form_update.html'
+    template_name = 'courseinfo/section_form_update.html'
     permission_required = 'courseinfo.change_section'
 
 
@@ -160,7 +160,7 @@ class StudentDetail(LoginRequiredMixin,PermissionRequiredMixin,View):
         registration_list = student.registrations.all()
         return render(
             request,
-            'courseInfo/student_detail.html',
+            'courseinfo/student_detail.html',
             {'student':student,
              'registration_list':registration_list}
         )
@@ -221,7 +221,7 @@ class SemesterDetail(LoginRequiredMixin,PermissionRequiredMixin,View):
         section_list = semester.sections.all()
         return render(
             request,
-            'courseInfo/semester_detail.html',
+            'courseinfo/semester_detail.html',
             {'semester':semester, 'section_list':section_list}
         )
 
@@ -280,7 +280,7 @@ class CourseDetail(LoginRequiredMixin,PermissionRequiredMixin,View):
         section_list = course.sections.all()
         return render(
             request,
-            'courseInfo/course_detail.html',
+            'courseinfo/course_detail.html',
             {'course':course,
              'section_list':section_list}
         )
@@ -342,7 +342,7 @@ class RegistrationDetail(LoginRequiredMixin,PermissionRequiredMixin,View):
         section = registration.section
         return render(
             request,
-            'courseInfo/registration_detail.html',
+            'courseinfo/registration_detail.html',
             {'registration':registration,
              'student':student,
              'section':section

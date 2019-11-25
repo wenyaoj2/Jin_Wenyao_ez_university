@@ -28,7 +28,7 @@ urlpatterns = [
     path('login/',
          LoginView.as_view(template_name='courseinfo/login.html'),
          name='login_urlpattern'
-    ),
+         ),
     path('logout/',
          LogoutView.as_view(),
          name='logout_urlpattern'
